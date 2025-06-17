@@ -1,61 +1,78 @@
-# Détection de Fraudes sur Transactions Bancaires
+# Détection d'Anomalies sur des Transactions Bancaires
 
 ## Description du projet
 
-Ce projet vise à détecter des transactions financières frauduleuses ou anormales à partir d’un jeu de données de transactions bancaires. Plusieurs méthodes d'analyse des anomalies sont appliquées pour identifier des transactions suspectes.
+Ce projet Python vise à détecter des transactions bancaires potentiellement frauduleuses à l’aide de méthodes de détection d’anomalies. En combinant plusieurs approches statistiques et algorithmiques, on identifie les transactions les plus suspectes à partir d’un fichier Excel de données financières.
 
-Le script Python traite un fichier Excel contenant des transactions, analyse la distribution des montants, et utilise différentes techniques de détection d'anomalies :
+L’objectif final est d’isoler les transactions considérées comme anormales par toutes les méthodes utilisées, pour maximiser la fiabilité de la détection.
 
-- Méthode statistique : Z-Score
-- Algorithmes d’apprentissage automatique non supervisés :
-  - Isolation Forest
-  - DBSCAN (clustering)
-  - Local Outlier Factor (LOF)
-  - One-Class SVM
+---
 
-Le but est d’identifier des transactions qui pourraient indiquer une fraude, avec une approche robuste combinant plusieurs méthodes.
+## Méthodes utilisées
+
+Le script applique cinq techniques différentes de détection d’anomalies :
+
+- Z-Score (approche statistique)
+- Isolation Forest (apprentissage non supervisé)
+- DBSCAN (clustering basé sur la densité)
+- Local Outlier Factor (LOF)
+- One-Class SVM
 
 ---
 
 ## Fonctionnalités principales
 
-- Chargement et prétraitement des données (formatage des dates, encodage des variables catégorielles)
-- Visualisation des données (histogramme et boxplot des montants)
-- Détection d’anomalies via 5 méthodes différentes
-- Visualisation des anomalies détectées (exemple avec Isolation Forest)
-- Synthèse et comparaison des résultats
-- Identification des transactions anormales détectées par **toutes** les méthodes (intersection)
-
----
-
-## Résultats
-
-- Le script affiche les transactions considérées comme anormales selon chaque méthode.
-- Un graphique montre la répartition des anomalies détectées par Isolation Forest dans le temps.
-- En sortie finale, il affiche la liste des transactions considérées anormales par **toutes les méthodes** (intersection des résultats), pour un niveau de confiance plus élevé.
+- Chargement et prétraitement des données :
+  - Formatage de la date
+  - Encodage de la variable `type_operation`
+- Analyse statistique et visualisations :
+  - Histogramme et boxplot des montants
+- Détection d’anomalies via cinq méthodes
+- Identification des transactions détectées comme anormales par toutes les méthodes
+- Export automatique du résultat final en CSV
+- Suppression de la colonne `is_fraud` si elle existe (nettoyage)
 
 ---
 
 ## Structure du code
 
-- Import des librairies
-- Chargement et prétraitement des données
-- Visualisation exploratoire
-- Implémentation et exécution des 5 méthodes de détection d’anomalies
-- Affichage et comparaison des anomalies détectées
-- Extraction des anomalies communes aux 5 méthodes
+1. Import des bibliothèques
+2. Chargement des données Excel
+3. Prétraitement :
+   - Formatage des dates
+   - Encodage des variables catégorielles
+4. Visualisation des montants
+5. Détection des anomalies :
+   - Z-Score
+   - Isolation Forest
+   - DBSCAN
+   - LOF
+   - One-Class SVM
+6. Fusion des résultats : intersection des indices anormaux
+7. Nettoyage (suppression éventuelle de `is_fraud`)
+8. Export des anomalies finales en `.csv`
+
+---
+
+## Résultats
+
+- Liste des transactions détectées comme anormales pour chaque méthode
+- Visualisation temporelle des anomalies (exemple : Isolation Forest)
+- Intersection des cinq méthodes pour une détection de haute confiance
+- Export final dans un fichier :  
+  `anomalies_finales.csv`
 
 ---
 
 ## Améliorations possibles
 
-- Ajouter plus de variables/features (ex : localisation GPS, moyen de paiement)
-- Automatiser la recherche de paramètres optimaux pour chaque méthode (ex : `eps` pour DBSCAN)
-- Intégrer une méthode de fusion ou de vote pondéré des anomalies détectées
-- Mettre en place une interface utilisateur ou une API pour faciliter l’analyse
+- Ajouter de nouvelles features (moyen de paiement, localisation, etc.)
+- Automatiser l’optimisation des hyperparamètres (par exemple `eps` pour DBSCAN)
+- Implémenter un système de vote pondéré entre les méthodes
+- Créer une interface utilisateur ou une API REST pour faciliter l'utilisation
 
 ---
 
 ## Licence
 
-Ce projet est libre d'utilisation et de modification sous licence MIT.
+Ce projet est libre d’utilisation et de modification sous licence MIT.
