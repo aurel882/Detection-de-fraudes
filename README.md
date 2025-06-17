@@ -30,7 +30,6 @@ Le script applique cinq techniques différentes de détection d’anomalies :
 - Détection d’anomalies via cinq méthodes
 - Identification des transactions détectées comme anormales par toutes les méthodes
 - Export automatique du résultat final en CSV
-- Suppression de la colonne `is_fraud` si elle existe (nettoyage)
 
 ---
 
@@ -49,8 +48,7 @@ Le script applique cinq techniques différentes de détection d’anomalies :
    - LOF
    - One-Class SVM
 6. Fusion des résultats : intersection des indices anormaux
-7. Nettoyage (suppression éventuelle de `is_fraud`)
-8. Export des anomalies finales en `.csv`
+7. Export des anomalies finales en `.csv`
 
 ---
 
